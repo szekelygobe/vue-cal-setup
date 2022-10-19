@@ -1,0 +1,28 @@
+{
+  "splits": [
+    {
+      "id": 1,
+      "class": "first_line",
+      "label": "First line",
+      "deletable": false,
+      "hide": true
+    },
+    {
+      "id": 2,
+      "class": "second_line",
+      "label": "Second line",
+      "deletable": false,
+      "hide": true
+    }
+  ],
+  "events": [
+    {
+      "start": "2018-11-19 10:35",
+      "end": "2018-11-19 12:30",
+      "title": "Doctor appointment",
+      "content": "SomeLogo",
+      "class": "health",
+      "split": 1
+    }
+  ]
+}
