@@ -1,12 +1,9 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Splits from "@/components/splits/Splits.vue"
 </script>
 
 <template>
-  <main>
-    <HelloWorld />
-  </main>
-</template>
 
-<style scoped>
-</style>
+  <splits> </splits>
+
+</template>

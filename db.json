@@ -2,16 +2,16 @@
   "splits": [
     {
       "id": 1,
-      "class": "first_line",
-      "label": "First line",
+      "class": "lane_1",
+      "label": "Lane 1",
       "deletable": false,
       "hide": true
     },
     {
       "id": 2,
-      "class": "second_line",
-      "label": "Second line",
-      "deletable": false,
+      "class": "lane_2",
+      "label": "Lane 2",
+      "deletable": true,
       "hide": true
     }
   ],
