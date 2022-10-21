@@ -31,5 +31,31 @@ export function useSourceData(){
         return response.data
     }
 
-    return { getData , updateData }
+    async function deleteData (endPoint, id){
+        let response = {}
+
+        try {
+            response = await axios.delete(baseURL+endPoint+'/'+id);
+        }
+        catch (error){
+            console.log('error', error);
+        }
+
+        return response.data
+    }
+
+    async function addData (endPoint, data){
+        let response = {}
+
+        try {
+            response = await axios.post(baseURL+endPoint, data);
+        }
+        catch (error){
+            console.log('error', error);
+        }
+
+        return response.data
+    }
+
+    return { getData , updateData , deleteData , addData }
 }
