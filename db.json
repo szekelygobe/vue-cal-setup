@@ -11,14 +11,14 @@
       "class": "lane_2",
       "label": "Lane 2",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 5
     },
     {
       "class": "lane_3",
       "label": "Lane 3",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 6
     },
     {

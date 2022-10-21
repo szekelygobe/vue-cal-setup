@@ -11,7 +11,9 @@
     splits: Object,
   })
 
+  function updateSplits(split_id, split_hide){
 
+  }
 
 </script>
 
@@ -26,18 +28,18 @@
     <ul class="border border-gray-600 divide-y divide-gray-600 mt-6" >
       <split
           v-for="split in splits"
+          :key="split.id"
           :split="split"
-          @update-split="updateSplit"
-          @delete-split="deleteSplit"
+          @updateVisibility="updateSplits"
       ></split>
     </ul>
 
-    <form @submit.prevent="addSplit">
-      <div class="border border-gray-600 text-black flex mt-2">
-        <input v-model="newSplit" placeholder="New split..." class="p-2 w-full" />
-        <button type="submit" class="bg-white p-2 border-l">Add</button>
-      </div>
-    </form>
+<!--    <form @submit.prevent="addSplit">-->
+<!--      <div class="border border-gray-600 text-black flex mt-2">-->
+<!--        <input v-model="newSplit" placeholder="New split..." class="p-2 w-full" />-->
+<!--        <button type="submit" class="bg-white p-2 border-l">Add</button>-->
+<!--      </div>-->
+<!--    </form>-->
 
     <template #footer>
       Manage splits [ add new | remove | show/hide ]

@@ -1,11 +1,16 @@
   <script setup>
+  import { useSourceData } from "@/composables/useSourceData.js"
+
+  const { updateData } = useSourceData();
+
   defineProps({
     split: Object,
   })
 
-  defineEmits([
-
-  ])
+  async function updateVisibility(split){
+    split.hide = !split.hide;
+    await updateData('splits', split );
+  };
 
   </script>
 <template>
@@ -15,7 +20,7 @@
       {{split.label}}
     </span>
     <button
-        @click.prevent="$emit('updateSplit', split)"
+        @click.prevent="updateVisibility(split)"
         :class="{
           'border rounded px-2 text-xs w-12 ' : true,
           'border-blue-500 text-blue-500' : split.hide == true,
@@ -25,7 +30,7 @@
       {{ split.hide ? 'show' : 'hide' }}
     </button>
     <button
-        @click.prevent="$emit('deleteSplit', split)"
+        @click.prevent="$emit()"
         :disabled="!split.deletable"
         :class="{
           'border rounded text-xs px-2 mx-2': true,

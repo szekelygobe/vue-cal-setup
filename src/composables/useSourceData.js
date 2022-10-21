@@ -18,5 +18,18 @@ export function useSourceData(){
         return response.data
     }
 
-    return { getData }
+    async function updateData (endPoint, data){
+        let response = {}
+
+        try {
+            response = await axios.put(baseURL+endPoint+'/'+data.id, data);
+        }
+        catch (error){
+            console.log('error', error);
+        }
+
+        return response.data
+    }
+
+    return { getData , updateData }
 }
