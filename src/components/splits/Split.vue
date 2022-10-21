@@ -3,6 +3,10 @@
     split: Object,
   })
 
+  defineEmits([
+
+  ])
+
   </script>
 <template>
 

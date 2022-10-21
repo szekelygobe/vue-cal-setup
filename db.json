@@ -1,27 +1,29 @@
 {
   "splits": [
     {
-      "id": 1,
       "class": "lane_1",
       "label": "Lane 1",
       "deletable": false,
-      "hide": false
+      "hide": false,
+      "id": 1
     },
     {
-      "class": "sdf",
-      "label": "sdf",
+      "class": "lane_2",
+      "label": "Lane 2",
       "deletable": true,
       "hide": true,
       "id": 5
     },
     {
-      "label": "dfdf",
+      "class": "lane_3",
+      "label": "Lane 3",
       "deletable": true,
       "hide": true,
       "id": 6
     },
     {
-      "label": "asdsad",
+      "class": "lane_4",
+      "label": "Lane 4",
       "deletable": true,
       "hide": false,
       "id": 7

@@ -12,29 +12,6 @@
   })
 
 
-  //
-  // function updateSplit(split){
-  //   split.hide = !split.hide;
-  //   // updateData('splits', split)
-  // }
-  //
-  // function deleteSplit(split){
-  //   // axios.delete(db_url + split.id)
-  //   //     .then(response => console.log(response.data))
-  //   //     .catch(error => (console.log(error)));
-  // }
-  //
-  // function addSplit(){
-  //   const split = {
-  //     class: slugify(newSplit.value),
-  //     label: newSplit.value,
-  //     deletable: true,
-  //     hide: false
-  //   }
-  //   // axios.post(db_url, split)
-  //   //     .then(response => console.log(response.data))
-  //   //     .catch(error => console.log(error))
-  // }
 
 </script>
 

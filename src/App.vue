@@ -1,18 +1,27 @@
 <script setup>
-  import { useLoadData } from "@/composables/useLoadData.js"
+  import { useSourceData } from "@/composables/useSourceData.js"
+  import { ref , onMounted} from "vue"
   import Splits from "@/components/splits/Splits.vue"
 
+  const splits = ref(null);
+  const { getData } = useSourceData();
 
-  const { bb, fff } = useLoadData();
+  onMounted(async () => {
+    splits.value = await getData('splits');
+  });
 
-  console.log(bb)
+
+
+
 
 </script>
 
 <template>
   <div class="grid gap-6 place-items-center">
 
-<!--    <splits :splits="fff('splits')"> </splits>-->
+    <splits
+        :splits="splits"
+    > </splits>
 <!--    <calendar :splits="splits"> </calendar>-->
   </div>
 </template>
