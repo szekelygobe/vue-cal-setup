@@ -5,26 +5,26 @@
       "class": "lane_1",
       "label": "Lane 1",
       "deletable": false,
-      "hide": true
-    },
-    {
-      "id": 2,
-      "class": "lane_2",
-      "label": "Lane 2",
-      "deletable": true,
       "hide": false
     },
     {
-      "label": "Lane 3",
+      "class": "sdf",
+      "label": "sdf",
       "deletable": true,
-      "hide": false,
-      "id": 3
+      "hide": true,
+      "id": 5
     },
     {
-      "label": "Lane 4",
+      "label": "dfdf",
+      "deletable": true,
+      "hide": true,
+      "id": 6
+    },
+    {
+      "label": "asdsad",
       "deletable": true,
       "hide": false,
-      "id": 4
+      "id": 7
     }
   ],
   "events": [

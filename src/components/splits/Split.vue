@@ -1,8 +1,9 @@
-<script setup>
-defineProps({
-  split: Object,
-})
-</script>
+  <script setup>
+  defineProps({
+    split: Object,
+  })
+
+  </script>
 <template>
 
   <li class="flex items-center">
