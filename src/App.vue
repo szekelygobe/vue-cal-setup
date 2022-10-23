@@ -1,5 +1,6 @@
 <script setup>
   import Splits from "@/components/splits/Splits.vue"
+  import calendar from "@/components/calendar/Calendar.vue"
 
   import { reactive , onMounted} from "vue"
   import { useSourceData } from "@/composables/useSourceData.js"
@@ -9,9 +10,11 @@
   const { slugify }     = useSlugify();
 
   const splits = reactive({});
+  const events = reactive({});
 
   onMounted(async () => {
     splits.value = await getData('splits');
+    events.value = await getData('events');
   });
 
   async function deleteSplit(split){
@@ -46,6 +49,18 @@
         @deleteSplit="deleteSplit"
         @addSplit="addSplit"
     > </splits>
-<!--    <calendar :splits="splits"> </calendar>-->
+
+<!--    <events-->
+<!--      :events="events"-->
+<!--      @deleteEvent="deleteEvent"-->
+<!--      @editEvent="editEvent"-->
+<!--      @addEvent="addEvent"-->
+<!--    ></events>-->
+
+    <calendar
+        :splits="splits"
+        :events="events"
+    > </calendar>
+
   </div>
 </template>
