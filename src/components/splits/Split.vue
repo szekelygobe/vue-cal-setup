@@ -5,7 +5,9 @@
 
   defineProps({
     split: Object,
-  })
+  });
+
+  const emit = defineEmits(['deleteSplit']);
 
   async function updateVisibility(split){
     split.hide = !split.hide;
@@ -30,7 +32,7 @@
       {{ split.hide ? 'show' : 'hide' }}
     </button>
     <button
-        @click.prevent="$emit()"
+        @click.prevent="emit('deleteSplit', split, split.key)"
         :disabled="!split.deletable"
         :class="{
           'border rounded text-xs px-2 mx-2': true,

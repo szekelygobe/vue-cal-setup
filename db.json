@@ -4,29 +4,29 @@
       "class": "lane_1",
       "label": "Lane 1",
       "deletable": false,
-      "hide": false,
+      "hide": true,
       "id": 1
     },
     {
       "class": "lane_2",
       "label": "Lane 2",
       "deletable": true,
-      "hide": false,
+      "hide": true,
       "id": 5
+    },
+    {
+      "class": "lane_3",
+      "label": "Lane ddd",
+      "deletable": true,
+      "hide": true,
+      "id": 4
     },
     {
       "class": "lane_3",
       "label": "Lane 3",
       "deletable": true,
-      "hide": false,
+      "hide": true,
       "id": 6
-    },
-    {
-      "class": "lane_4",
-      "label": "Lane 4",
-      "deletable": true,
-      "hide": false,
-      "id": 7
     }
   ],
   "events": [

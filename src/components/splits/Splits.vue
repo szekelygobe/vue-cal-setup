@@ -1,19 +1,18 @@
 <script setup>
+  import { ref } from "vue";
   import Panel from "@/components/Panel.vue"
   import Split from "@/components/splits/Split.vue"
   import {useSlugify} from "@/composables/useSlugify.js"
-  import { ref} from "vue";
 
-  let { slugify } = useSlugify();
-  let newSplit = ref('');
+  const { slugify }     = useSlugify();
+
+  let newSplit          = ref('');
 
   defineProps({
-    splits: Object,
+    splits: Object
   })
 
-  function updateSplits(split_id, split_hide){
-
-  }
+  const emit = defineEmits(['deleteSplit']);
 
 </script>
 
@@ -27,10 +26,10 @@
 
     <ul class="border border-gray-600 divide-y divide-gray-600 mt-6" >
       <split
-          v-for="split in splits"
+          v-for="(split, key) in splits"
           :key="split.id"
           :split="split"
-          @updateVisibility="updateSplits"
+          @deleteSplit="emit('deleteSplit', split)"
       ></split>
     </ul>
 
