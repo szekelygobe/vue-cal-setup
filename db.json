@@ -4,14 +4,14 @@
       "class": "lane_1",
       "label": "Lane 1",
       "deletable": false,
-      "hide": true,
+      "hide": false,
       "id": 1
     },
     {
       "class": "lane_2",
       "label": "Lane 2",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 5
     },
     {
@@ -41,27 +41,13 @@
       "deletable": true,
       "hide": true,
       "id": 9
-    },
-    {
-      "class": "lane_8",
-      "label": "Lane 8",
-      "deletable": true,
-      "hide": true,
-      "id": 11
-    },
-    {
-      "class": "lane_7",
-      "label": "Lane 7",
-      "deletable": true,
-      "hide": true,
-      "id": 12
     }
   ],
   "events": [
     {
       "start": "2018-11-19 10:35",
       "end": "2018-11-19 12:30",
-      "title": "Doctor appointment",
+      "title": "Lorem ipsum dolor sit amet, adipiscing elit. ",
       "content": "SomeLogo",
       "class": "health",
       "split": 1

@@ -5,7 +5,7 @@
 
   const emit = defineEmits(['deleteSplit', 'addSplit']);
 
-  defineProps({splits: Object})
+  defineProps({splits: Object});
 
   let newSplit = ref('');
 </script>
@@ -30,7 +30,7 @@
     <form @submit.prevent="emit('addSplit', newSplit)">
       <div class="border border-gray-600 text-black flex mt-2">
         <input v-model="newSplit" placeholder="New split..." class="p-2 w-full" />
-        <button type="submit" class="bg-white p-2 border-l">Add</button>
+        <button type="submit" class="bg-blue-500 text-white p-2 border-l">Add</button>
       </div>
     </form>
 

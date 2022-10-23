@@ -1,8 +1,10 @@
 <script setup>
   import Splits from "@/components/splits/Splits.vue"
-  import calendar from "@/components/calendar/Calendar.vue"
+  import Events from "@/components/events/Events.vue"
+  import AddEvent from "@/components/events/AddEvent.vue"
+  import Calendar from "@/components/calendar/Calendar.vue"
 
-  import { reactive , onMounted} from "vue"
+  import {reactive, onMounted, ref} from "vue"
   import { useSourceData } from "@/composables/useSourceData.js"
   import {useSlugify} from "@/composables/useSlugify.js"
 
@@ -11,6 +13,8 @@
 
   const splits = reactive({});
   const events = reactive({});
+
+  let showAddEvent = ref(false)
 
   onMounted(async () => {
     splits.value = await getData('splits');
@@ -39,28 +43,42 @@
         .then((resp)=> splits.value.push(resp));
   }
 
+  function addEvent(){
+    showAddEvent.value = true;
+  }
+
+  async function saveNewEvent(event){
+    console.log(event)
+  }
 </script>
 
 <template>
-  <div class="grid gap-6 place-items-center">
-
-    <splits
-        :splits="splits"
-        @deleteSplit="deleteSplit"
-        @addSplit="addSplit"
-    > </splits>
-
-<!--    <events-->
-<!--      :events="events"-->
-<!--      @deleteEvent="deleteEvent"-->
-<!--      @editEvent="editEvent"-->
-<!--      @addEvent="addEvent"-->
-<!--    ></events>-->
-
-    <calendar
+  <div class="grid gap-8 m-10">
+    <div class="flex gap-6">
+      <Events
+          :events="events"
+          @deleteEvent=""
+          @editEvent=""
+          @addEvent="addEvent"
+      ></Events>
+      <Splits
+          :splits="splits"
+          @deleteSplit="deleteSplit"
+          @addSplit="addSplit"
+      > </Splits>
+    </div>
+    <Calendar
         :splits="splits"
         :events="events"
-    > </calendar>
-
+    > </Calendar>
   </div>
+
+
+  <AddEvent
+      v-if="showAddEvent"
+      :show="showAddEvent"
+      :slots="splits"
+      @close="showAddEvent=false"
+      @saveNewEvent="saveNewEvent"
+  ></AddEvent>
 </template>

@@ -1,9 +1,9 @@
 import axios from "axios";
-import {ref} from "vue"
 import useBaseUrl from "@/composables/useBaseUrl.js";
 
 export function useSourceData(){
     const { baseURL } = useBaseUrl();
+
 
     async function getData (endPoint){
         let response = {}
@@ -18,6 +18,7 @@ export function useSourceData(){
         return response.data
     }
 
+
     async function updateData (endPoint, data){
         let response = {}
 
@@ -31,10 +32,9 @@ export function useSourceData(){
         return response.data
     }
 
+
     async function deleteData (endPoint, id){
         let response = {}
-
-        console.log(baseURL+endPoint+'/'+id)
 
         try {
             response = await axios.delete(baseURL+endPoint+'/'+id);
@@ -45,6 +45,7 @@ export function useSourceData(){
 
         return response.data
     }
+
 
     async function addData (endPoint, data){
         let response = {}
