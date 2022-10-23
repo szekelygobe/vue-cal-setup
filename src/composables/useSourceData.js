@@ -34,6 +34,8 @@ export function useSourceData(){
     async function deleteData (endPoint, id){
         let response = {}
 
+        console.log(baseURL+endPoint+'/'+id)
+
         try {
             response = await axios.delete(baseURL+endPoint+'/'+id);
         }

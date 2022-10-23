@@ -1,11 +1,14 @@
 <script setup>
-  import { useSourceData } from "@/composables/useSourceData.js"
-  import { ref , onMounted} from "vue"
   import Splits from "@/components/splits/Splits.vue"
 
-  const { getData, deleteData } = useSourceData();
+  import { reactive , onMounted} from "vue"
+  import { useSourceData } from "@/composables/useSourceData.js"
+  import {useSlugify} from "@/composables/useSlugify.js"
 
-  const splits = ref(null);
+  const { getData, deleteData, addData } = useSourceData();
+  const { slugify }     = useSlugify();
+
+  const splits = reactive({});
 
   onMounted(async () => {
     splits.value = await getData('splits');
@@ -14,10 +17,23 @@
   async function deleteSplit(split){
     if(splits.value.length > 1){
       await deleteData('splits', split.id)
-          .then(()=> splits.value.splice(splits.value.indexOf(split), 1))
+          // deleting split from
+          .then(()=> splits.value.splice(splits.value.indexOf(split), 1));
     } else {
       console.log('Can\'t delete more splits!');
     }
+  }
+
+  async function addSplit(splitName){
+    await addData(
+        'splits',
+        {
+          class: slugify(splitName),
+          label: splitName,
+          deletable: true,
+          hide: false
+        })
+        .then((resp)=> splits.value.push(resp));
   }
 
 </script>
@@ -28,6 +44,7 @@
     <splits
         :splits="splits"
         @deleteSplit="deleteSplit"
+        @addSplit="addSplit"
     > </splits>
 <!--    <calendar :splits="splits"> </calendar>-->
   </div>

@@ -32,7 +32,7 @@
       {{ split.hide ? 'show' : 'hide' }}
     </button>
     <button
-        @click.prevent="emit('deleteSplit', split, split.key)"
+        @click.prevent="emit('deleteSplit', split)"
         :disabled="!split.deletable"
         :class="{
           'border rounded text-xs px-2 mx-2': true,

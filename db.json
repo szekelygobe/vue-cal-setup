@@ -16,17 +16,45 @@
     },
     {
       "class": "lane_3",
-      "label": "Lane ddd",
-      "deletable": true,
-      "hide": true,
-      "id": 4
-    },
-    {
-      "class": "lane_3",
       "label": "Lane 3",
       "deletable": true,
       "hide": true,
       "id": 6
+    },
+    {
+      "class": "lane_4",
+      "label": "Lane 4",
+      "deletable": true,
+      "hide": true,
+      "id": 7
+    },
+    {
+      "class": "lane_5",
+      "label": "Lane 5",
+      "deletable": true,
+      "hide": true,
+      "id": 8
+    },
+    {
+      "class": "lane_6",
+      "label": "Lane 6",
+      "deletable": true,
+      "hide": true,
+      "id": 9
+    },
+    {
+      "class": "lane_8",
+      "label": "Lane 8",
+      "deletable": true,
+      "hide": true,
+      "id": 11
+    },
+    {
+      "class": "lane_7",
+      "label": "Lane 7",
+      "deletable": true,
+      "hide": true,
+      "id": 12
     }
   ],
   "events": [
