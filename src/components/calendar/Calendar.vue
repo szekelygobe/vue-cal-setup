@@ -17,7 +17,7 @@
         editable-events
 
         :hide-title-bar=true
-        :disable-views="['years', 'year', 'month']"
+        :disable-views="['years', 'year', ]"
 
         :time-from="8 * 60"
         :time-to="18 * 60"
@@ -27,9 +27,7 @@
         :sticky-split-labels="true"
         :split-days="splits.value"
         :events="events.value"
-
     />
-
   </panel>
 </template>
 

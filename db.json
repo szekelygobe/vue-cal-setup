@@ -4,14 +4,14 @@
       "class": "lane_1",
       "label": "Lane 1",
       "deletable": false,
-      "hide": true,
+      "hide": false,
       "id": 1
     },
     {
       "class": "lane_2",
       "label": "Lane 2",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 5
     },
     {

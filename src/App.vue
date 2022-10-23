@@ -1,6 +1,7 @@
 <script setup>
   import Splits from "@/components/splits/Splits.vue"
-  import calendar from "@/components/calendar/Calendar.vue"
+  import Events from "@/components/events/Events.vue"
+  import Calendar from "@/components/calendar/Calendar.vue"
 
   import { reactive , onMounted} from "vue"
   import { useSourceData } from "@/composables/useSourceData.js"
@@ -42,25 +43,25 @@
 </script>
 
 <template>
-  <div class="grid gap-6 place-items-center">
 
-    <splits
-        :splits="splits"
-        @deleteSplit="deleteSplit"
-        @addSplit="addSplit"
-    > </splits>
-
-<!--    <events-->
-<!--      :events="events"-->
-<!--      @deleteEvent="deleteEvent"-->
-<!--      @editEvent="editEvent"-->
-<!--      @addEvent="addEvent"-->
-<!--    ></events>-->
-
+  <div class="grid gap-8 m-10">
+    <div class="flex gap-6">
+      <events
+          :events="events"
+          @deleteEvent=""
+          @editEvent=""
+          @addEvent=""
+      ></events>
+      <splits
+          :splits="splits"
+          @deleteSplit="deleteSplit"
+          @addSplit="addSplit"
+      > </splits>
+    </div>
     <calendar
         :splits="splits"
         :events="events"
     > </calendar>
-
   </div>
+
 </template>

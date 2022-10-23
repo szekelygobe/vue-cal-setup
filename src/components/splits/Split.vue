@@ -1,4 +1,4 @@
-  <script setup>
+<script setup>
   import { useSourceData } from "@/composables/useSourceData.js"
 
   const { updateData } = useSourceData();
