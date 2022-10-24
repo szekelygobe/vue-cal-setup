@@ -11,7 +11,7 @@
       "class": "lane_2",
       "label": "Lane 2",
       "deletable": true,
-      "hide": false,
+      "hide": true,
       "id": 5
     },
     {
@@ -32,15 +32,8 @@
       "class": "lane_5",
       "label": "Lane 5",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 8
-    },
-    {
-      "class": "lane_6",
-      "label": "Lane 6",
-      "deletable": true,
-      "hide": true,
-      "id": 9
     }
   ],
   "events": [

@@ -4,7 +4,7 @@
   import AddEvent from "@/components/events/AddEvent.vue"
   import Calendar from "@/components/calendar/Calendar.vue"
 
-  import {reactive, onMounted, ref} from "vue"
+  import {reactive, onMounted, ref, computed} from "vue"
   import { useSourceData } from "@/composables/useSourceData.js"
   import {useSlugify} from "@/composables/useSlugify.js"
 
@@ -13,12 +13,17 @@
 
   const splits = reactive({});
   const events = reactive({});
+  const visibleSplits = reactive ({});
 
   let showAddEvent = ref(false)
 
   onMounted(async () => {
     splits.value = await getData('splits');
     events.value = await getData('events');
+
+    visibleSplits.value = computed(()=>{
+      return splits.value.filter(v => v.hide == false);
+    });
   });
 
   async function deleteSplit(split){
@@ -73,11 +78,10 @@
     > </Calendar>
   </div>
 
-
   <AddEvent
       v-if="showAddEvent"
       :show="showAddEvent"
-      :slots="splits"
+      :splits="visibleSplits"
       @close="showAddEvent=false"
       @saveNewEvent="saveNewEvent"
   ></AddEvent>

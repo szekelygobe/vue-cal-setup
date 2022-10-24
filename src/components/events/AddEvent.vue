@@ -13,10 +13,6 @@
   let newEvent = ref(null);
 
 
-  const visibleSlots = computed((splits)=>{
-    return splits.filter(s => !s.hide);
-  })
-
 </script>
 
 <template>
@@ -34,7 +30,7 @@
 
             <ul class="flex flex-wrap">
               <li
-                  v-for="split in splits"
+                  v-for="split in splits.value"
                   class=""
               >
                 <label class="p-2 flex justify-between items-center " >
