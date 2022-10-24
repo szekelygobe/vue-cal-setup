@@ -10,8 +10,10 @@
 
 
   let emit = defineEmits(['close', 'saveEvent'])
-  let newEvent = ref(null);
-
+  let newEvent = ref({});
+  let checkedSplits = ref([])
+  let fromDate = ref(null);
+  let toDate = ref(null);
 
 </script>
 
@@ -25,7 +27,7 @@
 
       <form >
 
-          <section>
+        <section>
             <h2> Active in splits:</h2>
 
             <ul class="flex flex-wrap">
@@ -33,14 +35,26 @@
                   v-for="split in splits.value"
                   class=""
               >
-                <label class="p-2 flex justify-between items-center " >
-                  {{ split.label }}
-                  <input type="checkbox"  class="ml-3" >
-                </label>
+
+                <div class="m-1">
+                  <label class="ml-2 text-sm  text-gray-600 flex gap-2 items-center cursor-pointer">
+                    <input
+                        :id="split.id"
+                        :value="split.id"
+                        name="split"
+                        type="checkbox"
+                        v-model="checkedSplits"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300
+                    ">
+                    <span class="block">{{ split.label }}</span>
+                  </label>
+                </div>
+
               </li>
             </ul>
 
           </section>
+
 
 
       </form>
