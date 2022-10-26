@@ -1,6 +1,8 @@
 <script setup>
   import Modal from "@/components/Modal.vue"
   import { computed, ref} from "vue";
+  import Datepicker from '@vuepic/vue-datepicker';
+  import '@vuepic/vue-datepicker/dist/main.css'
 
   defineProps({
     show:Boolean,
@@ -12,8 +14,17 @@
   let emit = defineEmits(['close', 'saveEvent'])
   let newEvent = ref({});
   let checkedSplits = ref([])
-  let fromDate = ref(null);
-  let toDate = ref(null);
+  const fromDateTime = ref(null);
+  const toDateTime = ref(null);
+
+  const repeat_options = [
+    {id: 1, name:"None (one time event)", value:"none"},
+    {id: 2, name:"Daily (each day of the week)", value:"daily"},
+    {id: 3, name:"Weekdays (from Monday to Friday)", value:"week_days"},
+    {id: 4, name:"Weekly (on selected day each week)", value:""}
+    // {id: 5, name:"", value:""},
+  ];
+
 
 </script>
 
@@ -27,10 +38,10 @@
 
       <form >
 
-        <section>
+        <section class="mt-10">
             <h2> Active in splits:</h2>
 
-            <ul class="flex flex-wrap">
+            <ul class="flex flex-wrap mt-2">
               <li
                   v-for="split in splits.value"
                   class=""
@@ -55,6 +66,22 @@
 
           </section>
 
+        <section class="mt-10 flex place-content-between">
+          <label> From date/time:
+            <Datepicker v-model="fromDateTime" />
+          </label>
+          <label> To date/time
+            <Datepicker v-model="toDateTime" />
+          </label>
+        </section>
+
+        <section>
+
+<!--          <select v-on:change="" v-model="" >-->
+<!--            <option v-for="item in items" :key="item.value" :value="item.value" >{{item.text}}</option>-->
+<!--          </select>-->
+
+        </section>
 
 
       </form>

@@ -1,5 +1,5 @@
 {
-  "name": "vue_cal_2",
+  "name": "vue_cal_test",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite & json-server --watch db.json -p 3001",
@@ -7,6 +7,7 @@
     "preview": "vite preview --port 4173"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^3.5.2",
     "axios": "^1.1.3",
     "vue": "^3.2.38",
     "vue-cal": "^4.8.0"

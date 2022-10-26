@@ -14,7 +14,7 @@
       v-if="show"
   >
     <div
-        class="w-3/4 max-w-lg p-5 rounded bg-white text-black"
+        class="w-3/4 max-w-2xl p-5 rounded bg-white text-black"
     >
 
       <header v-if="$slots.header">
