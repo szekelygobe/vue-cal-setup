@@ -16,13 +16,24 @@
   let checkedSplits = ref([])
   const fromDateTime = ref(null);
   const toDateTime = ref(null);
+  const repeatEvent= ref(null);
+  const repeatEnds= ref(null);
 
   const repeat_options = [
-    {id: 1, name:"None (one time event)", value:"none"},
-    {id: 2, name:"Daily (each day of the week)", value:"daily"},
-    {id: 3, name:"Weekdays (from Monday to Friday)", value:"week_days"},
-    {id: 4, name:"Weekly (on selected day each week)", value:""}
-    // {id: 5, name:"", value:""},
+    {id: 1, text:"None (one time event)", value:"none"},
+    {id: 2, text:"Daily (each day of the week)", value:"daily"},
+    {id: 3, text:"Weekdays (from Monday to Friday)", value:"week_days"},
+    {id: 4, text:"Weekly (on selected day each week)", value:"weekly"},
+    {id: 5, text:"Monthly (on selected week and day number each month)", value:"monthly_wd"},
+    {id: 6, text:"Monthly (on same date each month)", value:"monthly_d"},
+    {id: 7, text:"Yearly (on same date yearly)", value:"yearly"}
+    // {id: 8, text:"Custom (with custom settings)", value:"custom"},
+  ];
+
+  const repeat_end_options = [
+    {id: 1, text:"Never (repeat to infinity)", value:"never"},
+    {id: 2, text:"Date (end at specific date)", value:"date"},
+    {id: 3, text:"Number of repeats (repeat specific time)", value:"times"}
   ];
 
 
@@ -75,11 +86,24 @@
           </label>
         </section>
 
-        <section>
+        <section class="mt-10">
+          <div>
+            <label>
+              Repeat event :
+              <select v-model="repeatEvent" class="px-2 py-2 rounded border border-slate-300 outline-none box-border">
+                <option v-for="repeat in repeat_options" :key="repeat.id" :value="repeat.value" >{{repeat.text}}</option>
+              </select>
+            </label>
+          </div>
 
-<!--          <select v-on:change="" v-model="" >-->
-<!--            <option v-for="item in items" :key="item.value" :value="item.value" >{{item.text}}</option>-->
-<!--          </select>-->
+          <div class="mt-5">
+            <label>
+              Repeat ends :
+              <select v-model="repeatEnds" class="px-2 py-2 rounded border border-slate-300 outline-none box-border">
+                <option v-for="repeat_end in repeat_end_options" :key="repeat_end.id" :value="repeat_end.value" >{{repeat_end.text}}</option>
+              </select>
+            </label>
+          </div>
 
         </section>
 
