@@ -1,22 +1,19 @@
 <script setup>
-  import Datepicker from '@vuepic/vue-datepicker';
-  import '@vuepic/vue-datepicker/dist/main.css'
   import { computed, ref} from "vue";
   import Modal from "@/components/general/Modal.vue"
   import DropDown from "@/components/general/DropDown.vue"
+  import DatePicker from "@/components/general/DatePicker.vue"
 
   defineProps({
     show:Boolean,
     splits:Object
   });
 
-
-
   let emit = defineEmits(['close', 'saveEvent'])
   let newEvent = ref({});
   let checkedSplits = ref([])
-  const fromDateTime = ref(null);
-  const toDateTime = ref(null);
+  const fromDateTime = ref(new Date());
+  const toDateTime = ref(new Date());
   const repeatEventType= ref('test');
   const repeatEnds= ref(null);
 
@@ -78,20 +75,25 @@
 
           </section>
 
-        <section class="mt-10 flex place-content-between">
-          <label> From date/time:
-            <Datepicker v-model="fromDateTime" />
-          </label>
-          <label> To date/time
-            <Datepicker v-model="toDateTime" />
-          </label>
+        <section class="mt-10 ">
+          <date-picker
+              label="From date/time :"
+              v-model="fromDateTime"
+          />
+
+          <date-picker
+              class="mt-5"
+              label="To date/time :"
+              v-model="toDateTime"
+          />
+
         </section>
 
         <section class="mt-10">
           <div>
             <drop-down
                 name="repeat_type"
-                label="Repeat event:"
+                label="Repeat event :"
                 :options="repeat_options"
                 v-model="repeatEventType"
             />

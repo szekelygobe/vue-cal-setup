@@ -19,14 +19,14 @@
   <div>
     <label
         for="{{ name }}"
-        class="w-40 mr-3 border border-red-500 inline-block text-right"
+        class="w-40 mr-3 inline-block text-right"
     >
       {{ label }}
     </label>
     <select
         name="{{ name }}"
         @change="update"
-        class="w-96 px-2 py-2 rounded border border-slate-300 outline-none box-border "
+        class="w-full max-w-xs px-2 py-2 rounded border border-slate-300 outline-none box-border "
     >
       <option
           v-for="option in options"
