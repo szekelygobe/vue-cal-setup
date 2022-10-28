@@ -1,5 +1,5 @@
 <script setup>
-  import Panel from "@/components/Panel.vue"
+  import Panel from "@/components/general/Panel.vue"
   import VueCal from "vue-cal"
   import 'vue-cal/dist/vuecal.css'
   import {onMounted} from "vue";

@@ -1,6 +1,6 @@
 <script setup>
   import { ref } from "vue";
-  import Panel from "@/components/Panel.vue"
+  import Panel from "@/components/general/Panel.vue"
   import Split from "@/components/splits/Split.vue"
 
   const emit = defineEmits(['deleteSplit', 'addSplit']);

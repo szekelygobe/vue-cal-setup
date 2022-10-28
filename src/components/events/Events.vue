@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import Panel from "@/components/Panel.vue"
+import Panel from "@/components/general/Panel.vue"
 import Event from "@/components/events/Event.vue"
 
 const emit = defineEmits(

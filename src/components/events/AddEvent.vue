@@ -1,8 +1,9 @@
 <script setup>
-  import Modal from "@/components/Modal.vue"
-  import { computed, ref} from "vue";
   import Datepicker from '@vuepic/vue-datepicker';
   import '@vuepic/vue-datepicker/dist/main.css'
+  import { computed, ref} from "vue";
+  import Modal from "@/components/general/Modal.vue"
+  import DropDown from "@/components/general/DropDown.vue"
 
   defineProps({
     show:Boolean,
@@ -16,7 +17,7 @@
   let checkedSplits = ref([])
   const fromDateTime = ref(null);
   const toDateTime = ref(null);
-  const repeatEvent= ref(null);
+  const repeatEventType= ref('test');
   const repeatEnds= ref(null);
 
   const repeat_options = [
@@ -88,21 +89,21 @@
 
         <section class="mt-10">
           <div>
-            <label>
-              Repeat event :
-              <select v-model="repeatEvent" class="px-2 py-2 rounded border border-slate-300 outline-none box-border">
-                <option v-for="repeat in repeat_options" :key="repeat.id" :value="repeat.value" >{{repeat.text}}</option>
-              </select>
-            </label>
+            <drop-down
+                name="repeat_type"
+                label="Repeat event:"
+                :options="repeat_options"
+                v-model="repeatEventType"
+            />
           </div>
 
-          <div class="mt-5">
-            <label>
-              Repeat ends :
-              <select v-model="repeatEnds" class="px-2 py-2 rounded border border-slate-300 outline-none box-border">
-                <option v-for="repeat_end in repeat_end_options" :key="repeat_end.id" :value="repeat_end.value" >{{repeat_end.text}}</option>
-              </select>
-            </label>
+          <div class="mt-5" v-if="repeatEventType !== 'none'">
+            <drop-down
+                name="repeat_ends"
+                label="Repeat ends :"
+                :options="repeat_end_options"
+                v-model="repeatEnds"
+            />
           </div>
 
         </section>
