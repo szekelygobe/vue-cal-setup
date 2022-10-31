@@ -4,12 +4,14 @@
   import AddEvent from "@/components/events/AddEvent.vue"
   import Calendar from "@/components/calendar/Calendar.vue"
 
-  import {reactive, onMounted, ref, computed} from "vue"
+  import { reactive, onMounted, ref, computed } from "vue"
   import { useSourceData } from "@/composables/useSourceData.js"
-  import {useSlugify} from "@/composables/useSlugify.js"
+  import { useSlugify } from "@/composables/useSlugify.js"
+  import { useDate } from "@/composables/useDate.js"
 
   const { getData, deleteData, addData } = useSourceData();
-  const { slugify }     = useSlugify();
+  const { slugify } = useSlugify();
+  const { formatDate } = useDate();
 
   const splits = reactive({});
   const events = reactive({});
@@ -52,9 +54,18 @@
     showAddEvent.value = true;
   }
 
-  async function saveNewEvent(event){
-    console.log(event)
+  async function saveEvent(event){
+    await addData(
+        'events',
+        {
+          start: formatDate(event.fromDate),
+          end: formatDate(event.toDate),
+          title: event.name,
+          split: event.splits.toString()
+        })
+        .then((resp)=> events.value.push(resp));
   }
+
 </script>
 
 <template>
@@ -83,6 +94,6 @@
       :show="showAddEvent"
       :splits="visibleSplits"
       @close="showAddEvent=false"
-      @saveNewEvent="saveNewEvent"
+      @saveEvent="saveEvent"
   ></AddEvent>
 </template>

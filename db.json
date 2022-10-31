@@ -25,25 +25,33 @@
       "class": "lane_4",
       "label": "Lane 4",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 7
     },
     {
       "class": "lane_5",
       "label": "Lane 5",
       "deletable": true,
-      "hide": true,
+      "hide": false,
       "id": 8
     }
   ],
   "events": [
     {
-      "start": "2018-11-19 10:35",
-      "end": "2018-11-19 12:30",
+      "id": 1,
+      "start": "2022-10-31 10:35",
+      "end": "2022-10-31 12:30",
       "title": "Lorem ipsum dolor sit amet, adipiscing elit. ",
       "content": "SomeLogo",
       "class": "health",
-      "split": 1
+      "split": 6
+    },
+    {
+      "start": "2022-10-31 12:33",
+      "end": "2022-10-31 13:33",
+      "title": "Test2",
+      "split": "5,6",
+      "id": 2
     }
   ]
 }

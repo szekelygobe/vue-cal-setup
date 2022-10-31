@@ -1,5 +1,5 @@
 <script setup>
-import {computed, ref} from "vue";
+import {computed, reactive, ref} from "vue";
 import Modal from "@/components/general/Modal.vue"
 import DropDown from "@/components/general/DropDown.vue"
 import DatePicker from "@/components/general/DatePicker.vue"
@@ -10,14 +10,18 @@ defineProps({
 });
 
 let emit              = defineEmits(['close', 'saveEvent'])
-let newEvent          = ref({});
-let checkedSplits     = ref([])
-const fromDateTime    = ref(new Date());
-const toDateTime      = ref(new Date());
-const repeatEventType = ref('none');
-const repeatEnds      = ref('never');
-const repeatEndDate   = ref(null);
-const repeatNumber    = ref(2);
+const newEvent = reactive(
+    {
+      name: '',
+      splits: [],
+      fromDate: new Date(),
+      toDate: new Date(),
+      repeatType: 'none',
+      repeatEnds: 'never',
+      repeatEndDate: null,
+      repeatEndNumber: null
+    }
+);
 
 const repeat_options = [
   {id: 1, text: "None (one time event)", value: "none"},
@@ -49,6 +53,26 @@ const repeat_end_options = [
 
       <form>
 
+        <section>
+
+          <div class="mt-5">
+            <label
+                class="w-40 mr-3 inline-block text-right"
+                for="event_name"
+            >
+              Event name
+            </label>
+            <input
+                v-model="newEvent.name"
+                type="text"
+                name="event_name"
+                placeholder="Add event name"
+                class="w-full max-w-xs w inline-block rounded border border-slate-200 p-2"
+            >
+          </div>
+
+        </section>
+
         <section class="mt-10">
           <h2> Active in splits:</h2>
 
@@ -65,7 +89,7 @@ const repeat_end_options = [
                       :value="split.id"
                       name="split"
                       type="checkbox"
-                      v-model="checkedSplits"
+                      v-model="newEvent.splits"
                       class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300
                     ">
                   <span class="block">{{ split.label }}</span>
@@ -81,14 +105,14 @@ const repeat_end_options = [
           <date-picker
               label="From date/time :"
               :enable-time=true
-              v-model="fromDateTime"
+              v-model="newEvent.fromDate"
           />
 
           <date-picker
               class="mt-5"
               :enable-time=true
               label="To date/time :"
-              v-model="toDateTime"
+              v-model="newEvent.toDate"
           />
 
         </section>
@@ -100,29 +124,29 @@ const repeat_end_options = [
                 name="repeat_type"
                 label="Repeat event :"
                 :options="repeat_options"
-                v-model="repeatEventType"
+                v-model="newEvent.repeatType"
             />
           </div>
 
-          <div class="mt-5" v-if="repeatEventType !== 'none'">
+          <div class="mt-5" v-if="newEvent.repeatType !== 'none'">
             <drop-down
                 name="repeat_ends"
                 label="Repeat ends :"
                 :options="repeat_end_options"
-                v-model="repeatEnds"
+                v-model="newEvent.repeatEnds"
             />
           </div>
 
-          <div class="mt-5" v-if="repeatEnds == 'date'">
+          <div class="mt-5" v-if="newEvent.repeatType !== 'none' && newEvent.repeatEnds == 'date' ">
             <date-picker
                 label="Repeat end date:"
-                v-model="repeatEndDate"
+                v-model="newEvent.repeatEndDate"
                 :enable-time=false
 
             />
           </div>
 
-          <div class="mt-5" v-if="repeatEnds == 'times'">
+          <div class="mt-5" v-if="newEvent.repeatEnds == 'times' && newEvent.repeatType !== 'none'">
             <label
                 class="w-40 mr-3 inline-block text-right"
                 for="nr_reps"
@@ -130,30 +154,15 @@ const repeat_end_options = [
               Number of repetitions
             </label>
             <input
-                v-model="repeatNumber"
+                v-model="newEvent.repeatEndNumber"
                 type="text"
                 name="nr_reps"
                 class="w-full max-w-xs w inline-block rounded border border-slate-200 p-2"
             >
           </div>
-
-
         </section>
 
-
       </form>
-
-<!--      <div>-->
-<!--        {{ fromDateTime }} - {{ toDateTime }}-->
-<!--      </div>-->
-
-<!--      <div class="mt-5">-->
-<!--        {{ repeatEventType }} - {{ repeatEnds }}-->
-<!--      </div>-->
-
-<!--      <div class="mt-5">-->
-<!--        {{ repeatNumber }}-->
-<!--      </div>-->
 
     </template>
 
@@ -171,7 +180,11 @@ const repeat_end_options = [
         >close
         </button>
       </div>
+
+<!--      {{ newEvent }}-->
+
     </template>
+
 
   </Modal>
 </template>

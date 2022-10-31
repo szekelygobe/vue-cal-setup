@@ -11,7 +11,7 @@
 <template>
   <panel>
     <vue-cal
-        selected-date="2018-11-19"
+        selected-date="2022-10-31"
         active-view="day"
         locale="ro"
         editable-events
