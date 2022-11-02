@@ -1,33 +1,85 @@
 <script setup>
+  import {ref, reactive, onMounted} from "vue";
   import Panel from "@/components/general/Panel.vue"
-  import VueCal from "vue-cal"
-  import 'vue-cal/dist/vuecal.css'
-  import {onMounted} from "vue";
+  import {
+    BryntumProjectModel,
+    BryntumCalendar
+  } from '@bryntum/calendar-vue-3';
+
+  import { useCalendarConfig, useProjectConfig } from '@/AppConfig';
 
   defineProps({events: Object, splits: Object});
+
+
+
+
+  const calendar = ref(null);
+  const project = ref(null);
+
+  const calendarConfig = reactive(useCalendarConfig());
+  const projectConfig = reactive(useProjectConfig());
+
+  const resources = ref(null);
+  const events = ref(null);
+
+  resources.value = [
+    {
+      id         : 1,
+      name       : 'Default Calendar',
+      eventColor : 'green'
+    }
+  ];
+  events.value =  [
+    {
+      id         : 1,
+      name       : 'Meeting',
+      startDate  : '2022-01-01T10:00:00',
+      endDate    : '2022-01-01T11:00:00',
+      resourceId : 1
+    }
+  ];
+
+  onMounted(()=>{
+    calendar.value.instance.value.project = project.value.instance.value;
+  })
+
+
+
 
 </script>
 
 <template>
   <panel>
-    <vue-cal
-        selected-date="2022-10-31"
-        active-view="day"
-        locale="ro"
-        editable-events
+<!--    <vue-cal-->
+<!--        selected-date="2022-10-31"-->
+<!--        active-view="day"-->
+<!--        locale="ro"-->
+<!--        editable-events-->
 
-        :hide-title-bar=true
-        :disable-views="['years', 'year', ]"
+<!--        :hide-title-bar=true-->
+<!--        :disable-views="['years', 'year', ]"-->
 
-        :time-from="8 * 60"
-        :time-to="18 * 60"
-        :time-step="30"
+<!--        :time-from="8 * 60"-->
+<!--        :time-to="18 * 60"-->
+<!--        :time-step="30"-->
 
-        :min-split-width="100"
-        :sticky-split-labels="true"
-        :split-days="splits.value"
-        :events="events.value"
+<!--        :min-split-width="100"-->
+<!--        :sticky-split-labels="true"-->
+<!--        :split-days="splits.value"-->
+<!--        :events="events.value"-->
+<!--    />-->
+
+    <bryntum-project-model
+        ref="project"
+        v-bind="projectConfig"
+        :resources="resources"
+        :events="events"
     />
+    <bryntum-calendar
+        ref="calendar"
+        v-bind="calendarConfig"
+    />
+
   </panel>
 </template>
 
