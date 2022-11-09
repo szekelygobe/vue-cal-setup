@@ -1,16 +1,6 @@
 1<script >
 import Panel from "@/components/general/Panel.vue"
-import { DataManager, WebApiAdaptor } from '@syncfusion/ej2-data';
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, DragAndDrop, Resize, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective } from "@syncfusion/ej2-vue-schedule";
-import useBaseUrl from "@/composables/useBaseUrl.js";
-
-const { baseURL } = useBaseUrl();
-
-const dataManager = new DataManager({
-  url: baseURL+'events',
-  adaptor: new WebApiAdaptor,
-  crossDomain: true
-});
 
 export default {
   name: "Calendar",
@@ -32,9 +22,15 @@ export default {
       selectedDate: new Date(2022, 10, 29),
       allowMultiple: false,
       eventSettings: {
-        dataSource: dataManager
+        dataSource: this.mapped_events
       },
     };
+  },
+
+  computed: {
+    mapped_events (){
+      return this.events.value.map(e=>({...e, StartTime: new Date(e.StartTime), EndTime: new Date(e.EndTime)}))
+    }
   },
 
   provide: {
@@ -48,7 +44,7 @@ export default {
 
 <template>
   <div id='app'>
-    <div id='container' v-if="events">
+    <div id='container'>
       <ejs-schedule height='550px' :selectedDate='selectedDate'
                     :eventSettings='eventSettings'></ejs-schedule>
     </div>

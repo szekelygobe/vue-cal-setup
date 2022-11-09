@@ -14,7 +14,7 @@ const emit = defineEmits(['deleteEvent', 'editEvent']);
 <template>
   <li class="flex items-center">
     <span class="p-2 flex justify-between items-center flex-1" >
-      {{event.title}}
+      {{event.Subject}}
     </span>
     <button
         @click.prevent="emit('editEvent', event)"
