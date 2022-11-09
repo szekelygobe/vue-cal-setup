@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import {onMounted, ref} from "vue";
 import Panel from "@/components/general/Panel.vue"
 import Event from "@/components/events/Event.vue"
 
@@ -7,9 +7,10 @@ const emit = defineEmits(
     ['deleteEvent', 'editEvent', 'addEvent']
 );
 
-defineProps({events: Object});
+const props = defineProps({events: Object});
 
 let newEvent = ref(null);
+
 
 </script>
 

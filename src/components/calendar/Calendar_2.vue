@@ -1,8 +1,6 @@
 1<script >
-import {ref} from "vue"
 import Panel from "@/components/general/Panel.vue"
 import { ScheduleComponent, Day, Week, WorkWeek, Month, Agenda, DragAndDrop, Resize, ViewsDirective, ViewDirective, ResourcesDirective, ResourceDirective } from "@syncfusion/ej2-vue-schedule";
-import { nextTick } from 'vue'
 
 export default {
   name: "Calendar",
@@ -24,23 +22,15 @@ export default {
       selectedDate: new Date(2022, 10, 29),
       allowMultiple: false,
       eventSettings: {
-        dataSource: []
+        dataSource: this.mapped_events
       },
     };
   },
 
-  mounted() {
-
-    console.log(JSON.stringify(this.events))
-    // console.log(this.events.target.value)
-    // console.log(JSON.parse(JSON.stringify(this.events)))
-    this.eventSettings.dataSource = this.events;
-  },
-
   computed: {
-    // mapped_events (){
-    //   return this.events.value.map(e=>({...e, StartTime: new Date(e.StartTime), EndTime: new Date(e.EndTime)}))
-    // }
+    mapped_events (){
+      return this.events.value.map(e=>({...e, StartTime: new Date(e.StartTime), EndTime: new Date(e.EndTime)}))
+    }
   },
 
   provide: {
@@ -54,7 +44,7 @@ export default {
 
 <template>
   <div id='app'>
-    <div id='container' v-if="events">
+    <div id='container'>
       <ejs-schedule height='550px' :selectedDate='selectedDate'
                     :eventSettings='eventSettings'></ejs-schedule>
     </div>
