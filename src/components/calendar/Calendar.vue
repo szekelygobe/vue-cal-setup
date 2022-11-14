@@ -6,11 +6,19 @@ import useBaseUrl from "@/composables/useBaseUrl.js";
 
 const { baseURL } = useBaseUrl();
 
-const dataManager = new DataManager({
+const eventsDataManager = new DataManager({
   url: baseURL+'events',
   adaptor: new WebApiAdaptor,
   crossDomain: true
 });
+
+const splitsDataManager = new DataManager({
+  url: baseURL+'splits',
+  adaptor: new WebApiAdaptor,
+  crossDomain: true
+});
+
+
 
 export default {
   name: "Calendar",
@@ -30,10 +38,15 @@ export default {
   data() {
     return {
       selectedDate: new Date(2022, 10, 29),
-      allowMultiple: false,
-      eventSettings: {
-        dataSource: dataManager
+      group: {
+        byDate: true,
+        resources: ['Owners']
       },
+      allowMultiple: true,
+      eventSettings: {
+        dataSource: eventsDataManager
+      },
+      ownerDataSource: splitsDataManager
     };
   },
 
@@ -49,8 +62,26 @@ export default {
 <template>
   <div id='app'>
     <div id='container' v-if="events">
-      <ejs-schedule height='550px' :selectedDate='selectedDate'
-                    :eventSettings='eventSettings'></ejs-schedule>
+      <ejs-schedule
+          height='550px'
+          :selectedDate='selectedDate'
+          :eventSettings='eventSettings'
+          :group='group'
+      >
+        <e-resources>
+          <e-resource
+              field='OwnerId'
+              title='Owner'
+              name='Owners'
+              :allowMultiple='allowMultiple'
+              :dataSource='ownerDataSource'
+              textField='text'
+              idField='id'
+              colorField='color'
+          >
+          </e-resource>
+        </e-resources>
+      </ejs-schedule>
     </div>
   </div>
 </template>

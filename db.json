@@ -1,53 +1,30 @@
 {
   "splits": [
     {
-      "class": "lane_1",
-      "label": "Lane 1",
-      "deletable": false,
-      "hide": false,
-      "id": 1
+      "id": 1,
+      "text": "Lane 1",
+      "color": "#1aaa55"
     },
     {
-      "class": "lane_2",
-      "label": "Lane 2",
-      "deletable": true,
-      "hide": false,
-      "id": 5
-    },
-    {
-      "class": "lane_3",
-      "label": "Lane 3",
-      "deletable": true,
-      "hide": false,
-      "id": 6
-    },
-    {
-      "class": "lane_4",
-      "label": "Lane 4",
-      "deletable": true,
-      "hide": false,
-      "id": 7
-    },
-    {
-      "class": "lane_5",
-      "label": "Lane 5",
-      "deletable": true,
-      "hide": false,
-      "id": 8
+      "id": 2,
+      "text": "Lane 2",
+      "color":  "#1aaa55"
     }
   ],
   "events": [
     {
       "Id": 1,
+      "OwnerId": 1,
       "StartTime": "2022-11-29 10:35",
       "EndTime": "2022-11-29 12:30",
-      "Subject": "Test 1. "
+      "Subject": "Test 11. "
     },
     {
       "Id": 2,
+      "OwnerId": 2,
       "StartTime": "2022-11-29 12:33",
       "EndTime": "2022-11-29 13:33",
-      "Subject": "Test 2."
+      "Subject": "Test 12."
     }
   ]
 }
