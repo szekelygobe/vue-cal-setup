@@ -18,8 +18,6 @@ const splitsDataManager = new DataManager({
   crossDomain: true
 });
 
-
-
 export default {
   name: "Calendar",
 
